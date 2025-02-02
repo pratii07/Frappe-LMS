@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Library Dashboard</title>
+    <style>
+        body {
+            font-family: fantasy;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: rgba(99, 99, 112, 0.178);
+            border-radius: 8px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .header img#logo {
+            width: 50px;
+            height: auto;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            letter-spacing: 2px;
+            color: #333;
+            margin-left: 10px;
+        }
+
+        .header input {
+            margin: 0 10px;
+            padding: 10px 20px 10px 18px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            color: #333;
+            width: 240px;
+        }
+
+        .header .profile-section {
+            display: flex;
+            align-items: center;
+        }
+
+        img#profile {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            padding: 20px;
+        }
+
+        .header h4 {
+            margin: 0;
+            font-size: 16px;
+            color: #d63384;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .section {
+            display: flex;
+        }
+
+        .section1 {
+            background-color: #d63384;
+            height: auto;
+            width: 100px;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+        .section1 i{
+            font-size:120%;
+            margin-top: 35%;
+            margin-left: 36%;
+            cursor: pointer;
+        }
+        .section1 i:hover{
+            color: #ddddddd0;
+        }
+        #power-off{
+            margin-top: 935%;
+        }
+        .section2 {
+            height: auto;
+            width: 1040px;
+            background-color: #3a3a3a2b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 0 10px 0 10px;
+        }
+
+        #greet {
+            margin-left: 30px;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex: 1 1 70px;
+            text-align: center;
+            height: 70px;
+            width: 190px;
+        }
+
+        .card-header {
+            font-size: 18px;
+            font-weight: bold;
+            color: #555555;
+            margin-bottom: 10px;
+        }
+
+        .card-body {
+            font-size: 24px;
+            color: #d63384;
+        }
+
+        .lists-div {
+            display: flex;
+            gap: 30px;
+            margin: 30px 5px 30px 5px;
+        }
+
+        .member-box {
+            margin-right: 20px;
+        }
+
+        #import-books {
+            border-radius: 5px;
+            border: none;
+            font-weight: lighter;
+            background: #f4efefe4;
+            letter-spacing: 0.5px;
+            height: 40px;
+            width: 135px;
+            margin-top: 13px;
+            padding: 10px;
+            cursor: pointer;
+            position: absolute;
+            top: 23%;
+            left: 70%;
+        }
+
+        .member-box,
+        .book-box {
+            padding: 10px;
+            margin: 0 -6px 0 13px;
+            background-color: #fffcfc;
+            width: 450px;
+            border-radius: 8px;
+            font-size: 90%;
+            max-height: 312px;
+            overflow-y: auto;
+        }
+
+        .member-list,
+        .book-list {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .member-list h2,
+        .book-list h2 {
+            font-family: 'Times New Roman', Times, serif;
+            letter-spacing: 1px;
+        }
+
+        #add-member-btn,
+        #add-book-btn,
+        #issued-book-btn {
+            border-radius: 5px;
+            border: none;
+            font-weight: lighter;
+            background: #f4efefe4;
+            letter-spacing: 0.5px;
+            height: 40px;
+            width: 135px;
+            margin-top: 13px;
+            cursor: pointer;
+        }
+
+        #add-member-btn:hover,
+        #import-books:hover,
+        #add-book-btn:hover,
+        #issued-book-btn:hover {
+            background: #69636850;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            padding: 10px 5px 10px 5px;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+        }
+
+        th {
+            letter-spacing: 1px;
+            background-color: #f1f1f1;
+        }
+
+        .actions,
+        .details {
+            font-size: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+            top: -3px;
+            left: 5px;
+            letter-spacing: 1px;
+            color: rgb(153, 9, 9);
+        }
+
+        .actions:hover {
+            padding: 5px;
+            color: #555555;
+        }
+
+
+        .top-books {
+            margin-left: 20px;
+        }
+
+        .top-books img {
+            height: 180px;
+            border-radius: 7px;
+            margin-right: 50px;
+            margin: 0 20px 0 20px;
+            cursor: pointer;
+        }
+
+        .top-books p,
+        h2 {
+            font-family: fantasy;
+            letter-spacing: 1px;
+            color: #030303;
+        }
+
+        h2 {
+            margin-right: 50px;
+        }
+
+        .top-books p {
+            text-align: center;
+        }
+
+        .top-books img:hover {
+            box-shadow: 0 4px 6px rgb(39, 37, 37);
+        }
+
+        .overdue-book-list,
+        .books-issued {
+            background-color: #f1f1f1;
+            font-size: medium;
+            padding: 10px;
+            border-radius: 15px;
+            padding: 7px 10px 7px 10px;
+            max-height: 280px;
+            overflow-y: scroll;
+        }
+
+        .overdue-book-list th {
+            color: gray;
+        }
+
+        .books-issued th {
+            color: gray;
+        }
+
+        .books-issued {
+            margin-top: 20px;
+        }
+
+        .issue-list {
+            display: flex;
+        }
+
+        #issued-book-btn {
+            background-color: #cdcacc7b;
+            font-size: medium;
+            font-family: fantasy;
+            letter-spacing: 1px;
+            margin-left: 450%;
+        }
+
+        h2 {
+            margin-left: 20px;
+        }
+
+        .details:hover {
+            color: #555;
+            box-shadow: 0px 4px 6px 0.4px rgba(0, 0, 0, 0.1);
+        }
+
+        #searchInput {
+            padding: 10px 20px 15px 18px;
+            border: 1px solid #ddd;
+            border-right: none;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            color: #333;
+            width: 240px;
+            margin-right: 14px;
+        }
+
+        #search-btn {
+            position: relative;
+            right: 56px;
+            background-color: #cdcacc7b;
+            font-size: medium;
+            font-family: fantasy;
+            letter-spacing: 1px;
+            border: 1px solid #ddd;
+            border-left: none;
+            border-radius: 0 5px 5px 0;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        #info {
+            display: none;
+            position: absolute;
+            top: 16%;
+            left: 45%;
+            margin-top: -25px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            max-height: 70px;
+            max-width: 830px;
+            padding: 15px 30px 15px 30px;
+            overflow-y: scroll;
+        }
+
+        .return_btn {
+            color: #f1f1f1;
+            background-color: rgb(195, 29, 29);
+            font-size: small;
+            font-family: fantasy;
+            letter-spacing: 1px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .return_btn:hover {
+            background-color: rgb(228, 65, 65);
+
+        }
+        #date-time{
+            margin: -15px 0 20px 35px;
+        }
+        td a{
+            text-decoration: none;
+            color: rgb(38, 42, 41);
+        }
+        td a:hover{
+            color: rgba(64, 56, 56, 0.651);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <img src="frappelogo.png" alt="logo" style="width: 50px; height: auto;">
+            <h1>Library Dashboard</h1>
+            <input id="searchInput" type="text" placeholder="Search Books and Members....">
+            <button onclick="searchItems()" id="search-btn">Search</button>
+
+            <div id="info"></div>
+
+            <div class="profile-section">
+                <div>
+                    <h4>Pratiksha</h4>
+                    <p>Librarian</p>
+                </div>
+                <img id="profile" src="profilePhoto.jpeg" alt="profile">
+            </div>
+        </div>
+        <div class="section">
+            <div class="section1">
+                <p><i class="fa-solid fa-house"></i></p>
+                <p><i class="fa-solid fa-heart"></i></p>
+                <p><i class="fa-solid fa-book"></i></p>
+                <p><i class="fa-solid fa-users-line"></i></p>
+                <p><i class="fa-regular fa-bell"></i></p>
+                <p><i class="fa-solid fa-gear"></i></p>
+                <p id="power-off"><i class="fa-solid fa-power-off"></i></p>
+            </div>
+            <div class="section2">
+            <h1 id="greet">Hello, Pratiksha!</h1>
+
+            <div id="date-time"></div>
+
+            <button class="btn btn-primary" id="import-books">Import Books</button>
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-header">Total Visitors</div>
+                    <div class="card-body">
+                        <p>1223</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Borrowed Books</div>
+                    <div class="card-body">
+                        <p>740</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Overdue Books</div>
+                    <div class="card-body">
+                        <p>22</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">New Members</div>
+                    <div class="card-body">
+                        <p>60</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lists-div">
+                {% if member_records %}
+                <div class="member-box">
+                    <div class="member-list">
+                        <h2>Members List</h2>
+                        <a href="http://site1.local:8000/add-new-member/new"><button id="add-member-btn">Add New
+                                Member</button></a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for record in member_records %}
+                            <tr>
+                                <td>{{ record.member_id}}</td>
+                                <td>{{ record.name1 }}</td>
+                                <td>{{ record.email }}</td>
+                                <td>{{ record.phone_no }}</td>
+                                <td><a href="{{ record.route }}" class="actions">View</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+                {% if book_records %}
+                <div class="book-box">
+                    <div class="book-list">
+                        <h2>Books List</h2>
+                        <a href="http://site1.local:8000/add-new-book/new"><button id="add-book-btn">Add New
+                                Book</button></a>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Publisher</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for record in book_records %}
+                            <tr>
+                                <td>{{ record.title }}</td>
+                                <td>{{ record.author }}</td>
+                                <td>{{ record.publisher }}</td>
+                                <td><a href="{{ record.route }}" class="actions">View</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+            <h2>Top Choices</h2>
+            <div class="dashboard">
+                <div class="top-books">
+                    <img src="pride&prejudice.jpeg" alt="Book 1" class="book-cover">
+                    <p>Pride And Prejudice</p>
+                </div>
+
+                <div class="top-books">
+                    <img src="treasureIsland.jpeg" alt="Book 2" class="book-cover">
+                    <p>Treasure Island</p>
+                </div>
+
+                <div class="top-books">
+                    <img src="Becoming.jpeg" alt="Book 3" class="book-cover">
+                    <p>Becoming</p>
+                </div>
+
+                <div class="top-books">
+                    <img src="cosmos.jpeg" alt="Book 4" class="book-cover">
+                    <p>Cosmos</p>
+                </div>
+
+                <div class="top-books">
+                    <img src="tokilllthemockingbird.jpeg" alt="Book 5" class="book-cover">
+                    <p>To Kill A Mockingbird</p>
+                </div>
+            </div>
+
+            {% if overdue_books %}
+            <div class="overdue-book-list">
+                <h2>Overdue Books</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Member ID</th>
+                            <th>Member Name</th>
+                            <th>Book ID</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Overdue</th>
+                            <th>Status</th>
+                            <th>Return Date</th>
+                            <th>Fine</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in overdue_books %}
+                        <tr>
+                            <td>{{ record.member_id }}</td>
+                            <td> <a href="{{record.route}}">{{ record.member }}</a></td>
+                            <td>{{ record.book_id }}</td>
+                            <td>{{ record.book }}</td>
+                            <td>{{ record.author }}</td>
+                            <td>{{ record.overdue }} days</td>
+                            <td style="color:green">
+                                {{ record.transaction_type }}
+                            </td>
+                            <td>{{ record.return_date }}</td>
+                            <td>{{ record.fine }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+
+            {% if Issued_Books %}
+            <div class="books-issued">
+                <div class="issue-list">
+                    <h2>Books Issued</h2>
+                    <a href="http://site1.local:8000/issue-book/new"><button id="issued-book-btn">Issue
+                            Book</button></a>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Member ID</th>
+                            <th>Name</th>
+                            <th>Book</th>
+                            <th>Issue Date</th>
+                            <th>Return Date</th>
+                            <th>Details</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in Issued_Books %}
+                        <tr>
+                            <td>{{ record.member_id}}</td>
+                            <th>{{record.member}}</th>
+                            <td>{{ record.book }}</td>
+                            <td>{{ record.issue_date }}</td>
+                            <td>{{ record.return_date }}</td>
+                            <td><a href="{{ record.route }}" class="details">View Details</a></td>
+                            <td><button class="return_btn" data-doc-name="{{ record.name }}">Return</button></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+    <script src="import_books.js"></script>
+    <script src="book_website.js"></script> 
+    <script> 
+        function updateDateTime() {
+            const dateTimeElement = document.getElementById("date-time");
+      
+            const now = new Date(); 
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            
+            const dayName = days[now.getDay()]; 
+            const monthName = months[now.getMonth()]; 
+            const date = now.getDate(); 
+            const year = now.getFullYear(); 
+            let hours = now.getHours();
+            const minutes = now.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+            const time = `${hours}:${minutes < 10 ? '0' + minutes : minutes} ${ampm}`;
+            
+            dateTimeElement.innerHTML = `${monthName} ${date}, ${year} | ${dayName}, ${time}`;
+        }
+      
+          updateDateTime();
+      
+          setInterval(updateDateTime, 1000);
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const return_btns = document.querySelectorAll('.return_btn'); 
+        
+            return_btns.forEach(function(btn) {
+                btn.addEventListener("click", function () {
+                    const docName = btn.getAttribute("data-doc-name");
+                    if (!docName) {
+                        console.error("Document name not found!");
+                        return;
+                    }
+        
+                    const updatedData = {
+                        transaction_type: "Return",
+                    };
+                    //console.log("UPDATE : ",updatedData)
+        
+                    const apiUrl = `http://site1.local:8000/api/v2/document/Transactions/${docName}`;
+                    console.log("API URL:", apiUrl);
+        
+                    fetch(apiUrl, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                            'Authorization': 'token 67c9301033bb01a:d588893b610e6ed',
+                        },
+                        body: JSON.stringify(updatedData)
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("Data updated successfully:", data);
+                        // Optionally, update the UI here
+                    })
+                    .catch(error => {
+                        console.error("Error updating data:", error);
+                    });
+                });
+            });
+        });
+        
+    </script>
+</body>
+
+</html>

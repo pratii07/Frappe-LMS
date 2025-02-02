@@ -1,0 +1,130 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{member}-{##}",
+ "creation": "2025-01-30 11:58:23.476854",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "member",
+  "book",
+  "author",
+  "issue_date",
+  "return_date",
+  "due_date",
+  "route",
+  "is_published",
+  "column_break_mkis",
+  "member_id",
+  "book_id",
+  "fine",
+  "overdue",
+  "transaction_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "label": "Member",
+   "options": "Member"
+  },
+  {
+   "fieldname": "book",
+   "fieldtype": "Link",
+   "label": "Book",
+   "options": "Book"
+  },
+  {
+   "fieldname": "issue_date",
+   "fieldtype": "Date",
+   "label": "Issue Date"
+  },
+  {
+   "fieldname": "return_date",
+   "fieldtype": "Date",
+   "label": "Return Date"
+  },
+  {
+   "fieldname": "column_break_mkis",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "member.member_id",
+   "fieldname": "member_id",
+   "fieldtype": "Data",
+   "label": "Member ID"
+  },
+  {
+   "fetch_from": "book.book_id",
+   "fieldname": "book_id",
+   "fieldtype": "Data",
+   "label": "Book ID"
+  },
+  {
+   "fieldname": "fine",
+   "fieldtype": "Int",
+   "label": "Fine"
+  },
+  {
+   "fieldname": "overdue",
+   "fieldtype": "Int",
+   "label": "Overdue"
+  },
+  {
+   "fieldname": "transaction_type",
+   "fieldtype": "Select",
+   "label": "Transaction Type",
+   "options": "Issue\nReturn"
+  },
+  {
+   "fetch_from": "book.author",
+   "fieldname": "author",
+   "fieldtype": "Data",
+   "label": "Author"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "Is_published"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date"
+  }
+ ],
+ "has_web_view": 1,
+ "index_web_pages_for_search": 1,
+ "is_published_field": "is_published",
+ "links": [],
+ "modified": "2025-02-02 15:52:59.308830",
+ "modified_by": "Administrator",
+ "module": "library_management",
+ "name": "Transactions",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "route": "transaction",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

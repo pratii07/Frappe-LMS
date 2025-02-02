@@ -1,0 +1,143 @@
+{
+ "actions": [],
+ "autoname": "format:{title}-{###}",
+ "creation": "2025-01-30 12:10:45.922835",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "book_id",
+  "title",
+  "author",
+  "publisher",
+  "route",
+  "is_published",
+  "image",
+  "publication_date",
+  "review_count",
+  "column_break_usvi",
+  "stock",
+  "pages",
+  "isbn",
+  "isbn13",
+  "average_rating",
+  "language_code",
+  "rating_count"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "title"
+  },
+  {
+   "fieldname": "author",
+   "fieldtype": "Data",
+   "label": "Author"
+  },
+  {
+   "fieldname": "publisher",
+   "fieldtype": "Data",
+   "label": "Publisher"
+  },
+  {
+   "fieldname": "stock",
+   "fieldtype": "Int",
+   "label": "Stock"
+  },
+  {
+   "fieldname": "pages",
+   "fieldtype": "Int",
+   "label": "Pages"
+  },
+  {
+   "fieldname": "book_id",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Book ID"
+  },
+  {
+   "fieldname": "isbn",
+   "fieldtype": "Int",
+   "label": "ISBN"
+  },
+  {
+   "fieldname": "isbn13",
+   "fieldtype": "Int",
+   "label": "ISBN13"
+  },
+  {
+   "fieldname": "column_break_usvi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "Is_published"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach",
+   "label": "image"
+  },
+  {
+   "fieldname": "average_rating",
+   "fieldtype": "Rating",
+   "label": "Average Rating "
+  },
+  {
+   "fieldname": "publication_date",
+   "fieldtype": "Date",
+   "label": "Publication Date"
+  },
+  {
+   "fieldname": "review_count",
+   "fieldtype": "Int",
+   "label": "Review Count"
+  },
+  {
+   "fieldname": "language_code",
+   "fieldtype": "Select",
+   "label": "Language Code",
+   "options": "Eng\nFre\nEng-BG\nMar"
+  },
+  {
+   "fieldname": "rating_count",
+   "fieldtype": "Int",
+   "label": "Rating Count"
+  }
+ ],
+ "has_web_view": 1,
+ "index_web_pages_for_search": 1,
+ "is_published_field": "is_published",
+ "links": [],
+ "modified": "2025-02-01 19:47:33.132949",
+ "modified_by": "Administrator",
+ "module": "library_management",
+ "name": "Book",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "route": "book",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

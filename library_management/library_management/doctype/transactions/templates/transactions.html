@@ -1,0 +1,52 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="transaction-container">
+    <h4>Name: {{ doc.member }}</h4>
+    <h4>Book: {{ doc.book }}</h4>
+    <p><strong>Book ID:</strong> {{ doc.book_id }}</p>
+    <p><strong>Author:</strong> {{ doc.author }}</p>
+    <p><strong>Issue Date:</strong> {{ doc.issue_date }}</p>
+    <p><strong>Return Date:</strong> {{ doc.return_date }}</p>
+    <p><strong>Status:</strong> {{ doc.transaction_type }}</p>
+    <p><strong>Overdue Days:</strong> {{ doc.overdue }}</p>
+    <p id="fine"><strong>Fine:</strong> {{ doc.fine }}</p>
+</div>
+<style>
+
+.transaction-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.transaction-container h4 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.transaction-container p {
+    color: #555;
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.transaction-container p strong {
+    color: #222;
+}
+
+/* Status Styling */
+#fine {
+    font-weight: bold;
+    color: red;
+}
+
+</style>
+{% endblock %}
+
+<!-- this is a sample default web page template -->

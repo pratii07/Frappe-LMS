@@ -1,0 +1,95 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{name1}-{###}",
+ "creation": "2025-01-30 11:57:10.770298",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "member_id",
+  "name1",
+  "email",
+  "address",
+  "column_break_gzeo",
+  "phone_no",
+  "outstanding_debt",
+  "route",
+  "is_published"
+ ],
+ "fields": [
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address"
+  },
+  {
+   "fieldname": "member_id",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Member ID"
+  },
+  {
+   "fieldname": "phone_no",
+   "fieldtype": "Phone",
+   "label": "Phone No"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "Is_published"
+  },
+  {
+   "fieldname": "outstanding_debt",
+   "fieldtype": "Currency",
+   "label": "Outstanding Debt "
+  },
+  {
+   "fieldname": "column_break_gzeo",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "has_web_view": 1,
+ "index_web_pages_for_search": 1,
+ "is_published_field": "is_published",
+ "links": [],
+ "modified": "2025-02-02 15:24:07.498891",
+ "modified_by": "Administrator",
+ "module": "library_management",
+ "name": "Member",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "route": "member",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
