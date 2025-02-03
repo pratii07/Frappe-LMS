@@ -2,7 +2,7 @@
 document.getElementById("import-books").addEventListener("click", importBooks);
 
 async function importBooks() {
-    console.log("Starting book import...");
+    // console.log("Starting book import...");
 
     try {
         const response = await fetch('https://frappe.io/api/method/frappe-library?page=2', {
@@ -14,6 +14,7 @@ async function importBooks() {
 
         const data = await response.json();
         if (data.message && data.message.length > 0) {
+            let promises = [];
             for (const book of data.message) {
                 let keys = Object.keys(book);
 
@@ -30,11 +31,16 @@ async function importBooks() {
                     pages: numPagesValue
                 };
 
-                console.log("Sending book data:", bookData);
+                // console.log("Sending book data:", bookData);
                 
-                await sendToDoctype(bookData);
+                promises.push(sendToDoctype(bookData));
             }
+
+            await Promise.all(promises);
+
+            alert("All books imported successfully!");
         }
+        
     } catch (error) {
         console.error("Error fetching book data:", error);
     }
@@ -56,8 +62,8 @@ async function sendToDoctype(bookData) {
         }
 
         const result = await frappeResponse.json();
-        console.log("Book saved successfully:", result);
-    } catch (error) {
+        // console.log("Book saved successfully:", result);
+        } catch (error) {
         console.error("Error saving book:", error);
     }
 }

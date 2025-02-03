@@ -673,14 +673,13 @@
                 btn.addEventListener("click", function () {
                     const docName = btn.getAttribute("data-doc-name");
                     if (!docName) {
-                        console.error("Document name not found!");
+                        alert("Document name not found!");
                         return;
                     }
         
                     const updatedData = {
                         transaction_type: "Return",
                     };
-                    //console.log("UPDATE : ",updatedData)
         
                     const apiUrl = `http://site1.local:8000/api/v2/document/Transactions/${docName}`;
                     console.log("API URL:", apiUrl);
@@ -700,11 +699,10 @@
                         return response.json();
                     })
                     .then(data => {
-                        console.log("Data updated successfully:", data);
-                        // Optionally, update the UI here
+                        alert("Book Return successfully.")
                     })
                     .catch(error => {
-                        console.error("Error updating data:", error);
+                        alert("An Error occcurred while returning the book.");
                     });
                 });
             });
