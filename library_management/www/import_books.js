@@ -62,7 +62,6 @@ async function sendToDoctype(bookData) {
         }
 
         const result = await frappeResponse.json();
-        // console.log("Book saved successfully:", result);
         } catch (error) {
         console.error("Error saving book:", error);
     }

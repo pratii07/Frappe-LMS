@@ -20,7 +20,7 @@ class Transactions(WebsiteGenerator):
 
 
         member_debt = frappe.db.get_value("Member", {"name": self.member}, "outstanding_debt")
-        member_debt = member_debt if member_debt is not None else 0  # Default to 0 if None
+        member_debt = member_debt if member_debt is not None else 0  
 
         if self.transaction_type == "Issue" and member_debt > 500:
             frappe.throw("Book cannot be issued. Your outstanding debt is greater than 500. Please pay it first!")
